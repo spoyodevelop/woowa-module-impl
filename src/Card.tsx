@@ -4,26 +4,26 @@ interface CardProps {
   card: {
     cardNumber: string;
     setCardNumber: (value: string) => void;
-    errorMessage: string;
+    errorMessage?: string;
     isError: boolean;
     cardNetwork: string;
   };
   cvc: {
     CVCNumber: string;
     setCVCNumber: (value: string) => void;
-    errorMessage: string;
+    errorMessage?: string;
     isError: boolean;
   };
   expiry: {
     expiryDateNumber: string;
     setExpiryDateNumber: (value: string) => void;
-    errorMessage: string;
+    errorMessage?: string;
     isError: boolean;
   };
   password: {
     passwordNumber: string;
     setPasswordNumber: (value: string) => void;
-    errorMessage: string;
+    errorMessage?: string;
     isError: boolean;
   };
 }
