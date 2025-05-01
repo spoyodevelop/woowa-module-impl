@@ -62,7 +62,7 @@ function Card({ card, cvc, expiry, password }: CardProps) {
           {card.errorMessage && (
             <p className="error-message">{card.errorMessage}</p>
           )}
-          {card.cardNetwork !== "DEFAULT" && (
+          {card.cardNetwork !== "DEFAULT" && !card.isError && (
             <p className="card-network">{card.cardNetwork}</p>
           )}
         </div>
