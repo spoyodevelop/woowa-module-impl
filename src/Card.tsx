@@ -59,12 +59,14 @@ function Card({ card, cvc, expiry, password }: CardProps) {
             placeholder="1234 5678 9012 3456"
             className="card-input"
           />
-          {card.errorMessage && (
+          {card.errorMessage && card.cardNumber.length !== 0 && (
             <p className="error-message">{card.errorMessage}</p>
           )}
-          {card.cardNetwork !== "DEFAULT" && !card.isError && (
-            <p className="card-network">{card.cardNetwork}</p>
-          )}
+          {card.cardNetwork !== "DEFAULT" &&
+            !card.isError &&
+            card.cardNumber.length !== 0 && (
+              <p className="card-network">{card.cardNetwork}</p>
+            )}
         </div>
 
         <div className="input-row">
@@ -75,10 +77,10 @@ function Card({ card, cvc, expiry, password }: CardProps) {
               type="text"
               value={expiry.expiryDateNumber}
               onChange={handleExpiryChange}
-              placeholder="MM/YY"
+              placeholder="MMYY"
               className="card-input"
             />
-            {expiry.errorMessage && (
+            {expiry.errorMessage && expiry.expiryDateNumber.length !== 0 && (
               <p className="error-message">{expiry.errorMessage}</p>
             )}
           </div>
@@ -93,7 +95,7 @@ function Card({ card, cvc, expiry, password }: CardProps) {
               placeholder="123"
               className="card-input"
             />
-            {cvc.errorMessage && (
+            {cvc.errorMessage && cvc.CVCNumber.length !== 0 && (
               <p className="error-message">{cvc.errorMessage}</p>
             )}
           </div>
@@ -109,7 +111,7 @@ function Card({ card, cvc, expiry, password }: CardProps) {
             placeholder="비밀번호 앞 2자리"
             className="card-input"
           />
-          {password.errorMessage && (
+          {password.errorMessage && password.passwordNumber.length !== 0 && (
             <p className="error-message">{password.errorMessage}</p>
           )}
         </div>
