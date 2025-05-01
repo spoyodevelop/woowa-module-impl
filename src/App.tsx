@@ -14,13 +14,13 @@ function App() {
   return (
     <div className="app-container">
       <header className="app-header">
-        <h1>카드 결제 시스템</h1>
+        <h1>카드 등록 시스템</h1>
         <button
           className="payment-button"
           onClick={() => setIsOpen(true)}
           disabled={!isCardValid}
         >
-          결제하기
+          등록하기
         </button>
       </header>
 
@@ -30,12 +30,11 @@ function App() {
 
       <Modal
         position="center"
-        title="결제 정보 확인"
+        title="등록되었슈!"
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
       >
         <div className="modal-content">
-          <p>결제가 완료되었습니다.</p>
           <p>
             {card.cardNumber.slice(0, 4)}번호로 시작되는 {card.cardNetwork}
             카드를 만들었어요!
