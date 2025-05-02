@@ -4,7 +4,6 @@ interface CardInputProps {
   cardNumber: string;
   onCardNumberChange: React.ChangeEventHandler<HTMLInputElement>;
   errorMessage?: string;
-  cardNetwork: string;
   isError: boolean;
 }
 

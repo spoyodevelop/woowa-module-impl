@@ -42,7 +42,7 @@ function App() {
       >
         <div className="modal-content">
           <p>
-            {card.cardNumber.slice(0, 4)}번호로 시작되는 {card.cardNetwork}
+            {card.cardNumber.slice(0, 4)}번호로 시작되는 {network.cardNetwork}
             카드를 만들었어요!
           </p>
 
