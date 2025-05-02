@@ -1,50 +1,51 @@
 import "./Card.css";
 
-interface CardProps {
-  card: {
-    cardNumber: string;
-    setCardNumber: (value: string) => void;
-    errorMessage?: string;
-    isError: boolean;
-    cardNetwork: string;
-  };
-  cvc: {
-    CVCNumber: string;
-    setCVCNumber: (value: string) => void;
-    errorMessage?: string;
-    isError: boolean;
-  };
-  expiry: {
-    expiryDateNumber: string;
-    setExpiryDateNumber: (value: string) => void;
-    errorMessage?: string;
-    isError: boolean;
-  };
-  password: {
-    passwordNumber: string;
-    setPasswordNumber: (value: string) => void;
-    errorMessage?: string;
-    isError: boolean;
-  };
+interface CardInputProps {
+  cardNumber: string;
+  onCardNumberChange: React.ChangeEventHandler<HTMLInputElement>;
+  errorMessage?: string;
+  cardNetwork: string;
+  isError: boolean;
 }
 
-function Card({ card, cvc, expiry, password }: CardProps) {
+interface ExpiryInputProps {
+  expiryDateNumber: string;
+  onExpiryDateNumberChange: React.ChangeEventHandler<HTMLInputElement>;
+  errorMessage?: string;
+  isError: boolean;
+}
+
+interface CVCInputProps {
+  CVCNumber: string;
+  onCVCNumberChange: React.ChangeEventHandler<HTMLInputElement>;
+  errorMessage?: string;
+  isError: boolean;
+}
+
+interface PasswordInputProps {
+  passwordNumber: string;
+  onPasswordNumberChange: React.ChangeEventHandler<HTMLInputElement>;
+  errorMessage?: string;
+  isError: boolean;
+}
+interface NetworkInputProps {
+  cardNumber: string;
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  cardNetwork: string;
+}
+interface CardProps {
+  card: CardInputProps;
+  expiry: ExpiryInputProps;
+  cvc: CVCInputProps;
+  password: PasswordInputProps;
+  network: NetworkInputProps;
+}
+
+function Card({ card, cvc, expiry, password, network }: CardProps) {
   const handleCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    card.setCardNumber(e.target.value);
+    card.onCardNumberChange(e);
+    network.onChange(e);
   };
-
-  const handleCVCChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    cvc.setCVCNumber(e.target.value);
-  };
-
-  const handleExpiryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    expiry.setExpiryDateNumber(e.target.value);
-  };
-
-  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    password.setPasswordNumber(e.target.value);
-  };
-
   return (
     <div className="card-container">
       <h2>카드 정보 입력</h2>
@@ -62,10 +63,11 @@ function Card({ card, cvc, expiry, password }: CardProps) {
           {card.errorMessage && card.cardNumber.length !== 0 && (
             <p className="error-message">{card.errorMessage}</p>
           )}
-          {card.cardNetwork !== "DEFAULT" &&
+
+          {network.cardNetwork !== "DEFAULT" &&
             !card.isError &&
             card.cardNumber.length !== 0 && (
-              <p className="card-network">{card.cardNetwork}</p>
+              <p className="card-network">{network.cardNetwork}</p>
             )}
         </div>
 
@@ -76,7 +78,7 @@ function Card({ card, cvc, expiry, password }: CardProps) {
               id="expiry"
               type="text"
               value={expiry.expiryDateNumber}
-              onChange={handleExpiryChange}
+              onChange={expiry.onExpiryDateNumberChange}
               placeholder="MMYY"
               className="card-input"
             />
@@ -91,7 +93,7 @@ function Card({ card, cvc, expiry, password }: CardProps) {
               id="cvc"
               type="text"
               value={cvc.CVCNumber}
-              onChange={handleCVCChange}
+              onChange={cvc.onCVCNumberChange}
               placeholder="123"
               className="card-input"
             />
@@ -107,7 +109,7 @@ function Card({ card, cvc, expiry, password }: CardProps) {
             id="password"
             type="password"
             value={password.passwordNumber}
-            onChange={handlePasswordChange}
+            onChange={password.onPasswordNumberChange}
             placeholder="비밀번호 앞 2자리"
             className="card-input"
           />
