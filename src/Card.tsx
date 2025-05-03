@@ -59,15 +59,13 @@ function Card({ card, cvc, expiry, password, network }: CardProps) {
             placeholder="1234 5678 9012 3456"
             className="card-input"
           />
-          {card.errorMessage && card.cardNumber.length !== 0 && (
+          {card.errorMessage && (
             <p className="error-message">{card.errorMessage}</p>
           )}
 
-          {network.cardNetwork !== "DEFAULT" &&
-            !card.isError &&
-            card.cardNumber.length !== 0 && (
-              <p className="card-network">{network.cardNetwork}</p>
-            )}
+          {network.cardNetwork !== "DEFAULT" && !card.isError && (
+            <p className="card-network">{network.cardNetwork}</p>
+          )}
         </div>
 
         <div className="input-row">
@@ -81,7 +79,7 @@ function Card({ card, cvc, expiry, password, network }: CardProps) {
               placeholder="MMYY"
               className="card-input"
             />
-            {expiry.errorMessage && expiry.expiryDateNumber.length !== 0 && (
+            {expiry.errorMessage && (
               <p className="error-message">{expiry.errorMessage}</p>
             )}
           </div>
@@ -96,7 +94,7 @@ function Card({ card, cvc, expiry, password, network }: CardProps) {
               placeholder="123"
               className="card-input"
             />
-            {cvc.errorMessage && cvc.CVCNumber.length !== 0 && (
+            {cvc.errorMessage && (
               <p className="error-message">{cvc.errorMessage}</p>
             )}
           </div>

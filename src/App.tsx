@@ -9,7 +9,14 @@ function App() {
   const { card, cvc, expiry, password, network } = useCardValidation();
 
   const isCardValid =
-    !card.isError && !cvc.isError && !expiry.isError && !password.isError;
+    !card.isError &&
+    !cvc.isError &&
+    !expiry.isError &&
+    !password.isError &&
+    card.cardNumber.length > 0 &&
+    cvc.CVCNumber.length > 0 &&
+    expiry.expiryDateNumber.length > 0 &&
+    password.passwordNumber.length > 0;
 
   return (
     <div className="app-container">
@@ -34,22 +41,27 @@ function App() {
         />
       </main>
 
-      <Modal
-        position="center"
-        title="등록되었슈!"
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
-      >
-        <div className="modal-content">
-          <p>
-            {card.cardNumber.slice(0, 4)}번호로 시작되는 {network.cardNetwork}
-            카드를 만들었어요!
-          </p>
+      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} position="bottom">
+        <Modal.Background>
+          <Modal.Container>
+            <Modal.Header>등록되었슈!!</Modal.Header>
+            <Modal.Content>
+              <p>
+                {card.cardNumber.slice(0, 4)}번호로 시작되는{" "}
+                {network.cardNetwork}
+                카드를 만들었어요!
+              </p>
 
-          <button className="close-button" onClick={() => setIsOpen(false)}>
-            확인
-          </button>
-        </div>
+              <button
+                className="close-button"
+                onClick={() => setIsOpen(false)}
+                disabled={!isCardValid}
+              >
+                확인
+              </button>
+            </Modal.Content>
+          </Modal.Container>
+        </Modal.Background>
       </Modal>
     </div>
   );
