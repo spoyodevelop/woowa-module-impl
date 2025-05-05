@@ -32,18 +32,32 @@ interface NetworkInputProps {
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   cardNetwork: string;
 }
+interface FormatProps {
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  raw: string;
+  formatted: string;
+}
 interface CardProps {
   card: CardInputProps;
   expiry: ExpiryInputProps;
   cvc: CVCInputProps;
   password: PasswordInputProps;
   network: NetworkInputProps;
+  format: FormatProps;
 }
 
-function Card({ card, cvc, expiry, password, network }: CardProps) {
+function Card({ card, cvc, expiry, password, network, format }: CardProps) {
   const handleCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    card.onCardNumberChange(e);
-    network.onChange(e);
+    format.onChange(e);
+
+    const digits = e.target.value.replace(/\D/g, "");
+
+    const sanitizedEvent = {
+      ...e,
+      target: { ...e.target, value: digits },
+    };
+    network.onChange(sanitizedEvent);
+    card.onCardNumberChange(sanitizedEvent);
   };
   return (
     <div className="card-container">
@@ -54,7 +68,7 @@ function Card({ card, cvc, expiry, password, network }: CardProps) {
           <input
             id="cardNumber"
             type="text"
-            value={card.cardNumber}
+            value={format.formatted}
             onChange={handleCardNumberChange}
             placeholder="1234 5678 9012 3456"
             className="card-input"

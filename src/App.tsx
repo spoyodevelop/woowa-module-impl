@@ -6,7 +6,7 @@ import { useCardValidation } from "woowacourse-hooks-marvin";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
-  const { card, cvc, expiry, password, network } = useCardValidation();
+  const { card, cvc, expiry, password, network, format } = useCardValidation();
 
   const isCardValid =
     !card.isError &&
@@ -38,6 +38,7 @@ function App() {
           expiry={expiry}
           password={password}
           network={network}
+          format={format}
         />
       </main>
 
