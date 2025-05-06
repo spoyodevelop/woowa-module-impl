@@ -36,6 +36,8 @@ interface FormatProps {
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   raw: string;
   formatted: string;
+  placeholder: string;
+  totalLength: number;
 }
 interface CardProps {
   card: CardInputProps;
@@ -70,8 +72,9 @@ function Card({ card, cvc, expiry, password, network, format }: CardProps) {
             type="text"
             value={format.formatted}
             onChange={handleCardNumberChange}
-            placeholder="1234 5678 9012 3456"
+            placeholder={format.placeholder}
             className="card-input"
+            maxLength={format.totalLength}
           />
           {card.errorMessage && (
             <p className="error-message">{card.errorMessage}</p>
