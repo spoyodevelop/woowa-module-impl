@@ -42,28 +42,17 @@ function App() {
         />
       </main>
 
-      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} position="bottom">
-        <Modal.Background>
-          <Modal.Container>
-            <Modal.Header>등록되었슈!!</Modal.Header>
-            <Modal.Content>
-              <p>
-                {card.cardNumber.slice(0, 4)}번호로 시작되는{" "}
-                {network.cardNetwork}
-                카드를 만들었어요!
-              </p>
-
-              <button
-                className="close-button"
-                onClick={() => setIsOpen(false)}
-                disabled={!isCardValid}
-              >
-                확인
-              </button>
-            </Modal.Content>
-          </Modal.Container>
-        </Modal.Background>
-      </Modal>
+      <Modal.Alert
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        position="center"
+        size="small"
+        title="등록되었슈!!"
+        message={`${card.cardNumber.slice(0, 4)}번호로 시작되는 ${
+          network.cardNetwork
+        }카드를 만들었어요!`}
+        onConfirm={() => setIsOpen(false)}
+      />
     </div>
   );
 }
