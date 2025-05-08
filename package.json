@@ -14,7 +14,7 @@
   "dependencies": {
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "woowacourse-hooks-marvin": "0.0.17",
+    "woowacourse-hooks-marvin": "0.0.18",
     "woowacourse-modal-component-marvin": "0.0.23"
   },
   "devDependencies": {
