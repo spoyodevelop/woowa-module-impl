@@ -11,7 +11,13 @@ function App() {
     setIsOpen(true);
   };
   return (
-    <>
+    <div>
+      <h2>
+        카드를 등록하세요!{" "}
+        <span role="img" aria-label="card" className="card-icon">
+          💳
+        </span>
+      </h2>
       <CardForm cardForm={cardForm} />
 
       <Modal.Alert
@@ -25,7 +31,7 @@ function App() {
         }카드를 만들었어요!`}
         onConfirm={() => setIsOpen(false)}
       />
-    </>
+    </div>
   );
 }
 
