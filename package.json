@@ -14,8 +14,8 @@
   "dependencies": {
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "woowacourse-hooks-marvin": "0.0.28",
-    "woowacourse-modal-component-marvin": "0.0.32"
+    "woowacourse-hooks-marvin": "1.0.0",
+    "woowacourse-modal-component-marvin": "1.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",
