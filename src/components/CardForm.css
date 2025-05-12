@@ -1,5 +1,6 @@
 .card-form-container {
-  max-width: 500px;
+  width: 100%;
+  box-sizing: border-box;
   margin: 0 auto;
   padding: 20px;
   background-color: #fff;
@@ -36,6 +37,8 @@ label {
 }
 
 input {
+  width: 100%;
+  box-sizing: border-box;
   padding: 12px 15px;
   border: 1px solid #ddd;
   border-radius: 6px;
@@ -48,6 +51,9 @@ input:focus {
   border-color: #2563eb;
   box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
 }
+
+/* Ensure consistent width and appearance for CVC and expiryDate inputs */
+/* 이 스타일은 이제 모든 input에 적용되었으므로 제거합니다 */
 
 .error-message {
   margin-block-start: 0em;

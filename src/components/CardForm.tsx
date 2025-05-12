@@ -1,8 +1,8 @@
-import { useCardForm, UseCardFormReturn } from "woowacourse-hooks-marvin";
+import { UseCardFormReturn } from "woowacourse-hooks-marvin";
 import "./CardForm.css";
 
 interface CardFormProps {
-  cardForm?: UseCardFormReturn;
+  cardForm: UseCardFormReturn;
 }
 
 const CardForm: React.FC<CardFormProps> = ({ cardForm }) => {
@@ -20,7 +20,7 @@ const CardForm: React.FC<CardFormProps> = ({ cardForm }) => {
     cardPlaceholder,
     cardNumberMaxLength,
     reset,
-  } = cardForm || useCardForm();
+  } = cardForm;
 
   return (
     <div className="card-form-container">
